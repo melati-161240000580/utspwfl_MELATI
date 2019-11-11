@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 11 Nov 2019 pada 09.15
--- Versi Server: 10.1.28-MariaDB
--- PHP Version: 5.6.32
+-- Generation Time: 11 Nov 2019 pada 12.55
+-- Versi Server: 10.1.19-MariaDB
+-- PHP Version: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -53,7 +51,9 @@ INSERT INTO `log` (`id`, `nim`, `no_hp_lama`, `no_hp_baru`, `tgl_diubah`) VALUES
 (10, '161240000523', '0897373733', '0897373733', '2019-11-01 17:26:17'),
 (11, '161240000551', '08497576767', '08497576767', '2019-11-01 17:26:25'),
 (12, '161240000523', '0897373733', '0897373733', '2019-11-01 17:28:10'),
-(13, '1612400000666', '089886868', '089886868', '2019-11-11 14:33:07');
+(13, '1612400000666', '089886868', '089886868', '2019-11-11 14:33:07'),
+(14, '161240000567', '089766555', '089766555123', '2019-11-11 18:04:43'),
+(15, '161240000512', '089377483', '089377483678', '2019-11-11 18:04:50');
 
 -- --------------------------------------------------------
 
@@ -76,11 +76,9 @@ CREATE TABLE `mahasiswa` (
 
 INSERT INTO `mahasiswa` (`id`, `nim`, `nama_mhs`, `jenis_kelamin`, `alamat`, `no_hp`) VALUES
 (3, '161240000551', 'retno nur cahyanti', 'Laki-laki', 'demaan', '08497576767'),
-(4, '161240000523', 'hikam', 'Perempuan', 'kauman', '0897373733'),
 (7, '161240000534', 'farin hernando', 'Perempuan', 'karang gondang', '0897366272'),
-(9, '161240000567', 'vikry', 'Perempuan', 'jepara', '089766555'),
-(10, '1612400000666', 'maria', 'Perempuan', 'jepara', '089886868'),
-(11, '161240000512', 'jojo', 'Laki-laki', 'mantingan', '089377483');
+(12, '161240000999', 'hadi', 'Laki-laki', 'Jepara', '089765432123'),
+(13, '161240000580', 'melati nur indah sari', 'Perempuan', 'ngabul', '085713722804');
 
 --
 -- Trigger `mahasiswa`
@@ -93,30 +91,6 @@ no_hp_baru = new.no_hp,
 tgl_diubah = now()
 $$
 DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `tampil`
--- (Lihat di bawah untuk tampilan aktual)
---
-CREATE TABLE `tampil` (
-`id` int(20)
-,`nim` varchar(20)
-,`nama_mhs` varchar(50)
-,`jenis_kelamin` varchar(15)
-,`alamat` varchar(50)
-,`no_hp` varchar(20)
-);
-
--- --------------------------------------------------------
-
---
--- Struktur untuk view `tampil`
---
-DROP TABLE IF EXISTS `tampil`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `tampil`  AS  (select `mahasiswa`.`id` AS `id`,`mahasiswa`.`nim` AS `nim`,`mahasiswa`.`nama_mhs` AS `nama_mhs`,`mahasiswa`.`jenis_kelamin` AS `jenis_kelamin`,`mahasiswa`.`alamat` AS `alamat`,`mahasiswa`.`no_hp` AS `no_hp` from `mahasiswa`) ;
 
 --
 -- Indexes for dumped tables
@@ -142,15 +116,12 @@ ALTER TABLE `mahasiswa`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-COMMIT;
-
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
